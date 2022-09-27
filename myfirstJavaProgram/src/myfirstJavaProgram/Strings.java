@@ -1,7 +1,13 @@
 package myfirstJavaProgram;
 
 public class Strings {
-
+	//String is not a primitive data type
+	//it's a Class
+	//sequence of characters
+	//strings are immutable
+	//StringBuffer : StringBuffer is a peer class of String that provides much of the functionality of strings.
+	//StringBuffer class is used to create mutable (modifiable) string. 
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -31,6 +37,8 @@ public class Strings {
 		System.out.println(lower);
 		System.out.println(trimResult);
 		System.out.println(replaceResult);
+		
+		
 	}
 
 }

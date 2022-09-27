@@ -1,0 +1,3 @@
+datatypes notes
+
+https://zetcode.com/lang/java/datatypes/

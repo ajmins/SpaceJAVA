@@ -2,7 +2,7 @@ package myfirstJavaProgram;
 import java.util.Scanner;
 
 public class LogicalOperator {
-
+	//based on boolean operands 
 	public static void main(String[] args) {
 		// && - AND
 		// || - OR
@@ -30,6 +30,20 @@ public class LogicalOperator {
 			System.out.println("You are still playing a game!");
 		}
 		scanner.close();
+		
+		//NOT
+		//aka Logicl complement operator
+		int score = 100;
+		if (score != 150){
+			System.out.println("Score is not 150");
+		}
+		else if (score != 100){
+			System.out.println("Score is not 100");
+		}
+		
+		//BITWISE OPERATOR
+		//& is bitwise AND 
+		//| bitwise OR
 	}
 
 }
