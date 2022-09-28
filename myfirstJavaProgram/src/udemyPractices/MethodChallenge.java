@@ -46,18 +46,19 @@ public class MethodChallenge {
 		
 	}
 	public static int calculateHighScorePosition(int playerscore) {
+		int position = 4;
 		if (playerscore >= 1000) {
-			return 1;
+			 position = 1;
 		}
 		else if (playerscore >= 500) {
-			return 2;
+			 position = 2;
 		}
 		else if (playerscore >= 100) {
-			return 3;
+			 position = 3;
 		}
-		else {
-			return 4;
-		}
+		
+		 return position;
+		
 		
 	}
 	//OUTPUT
