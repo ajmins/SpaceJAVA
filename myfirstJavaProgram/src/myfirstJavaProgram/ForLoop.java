@@ -8,6 +8,16 @@ public class ForLoop {
 			System.out.println(index);
 		}
 		System.out.println("Happy New Year");
+		double amount = 10000;
+		for (int i = 0; i < 12; i++) {
+			//we can adjust the precision by using String.format() method
+			//"%.2f" means after decimal 2 points only 
+			System.out.println(amount +" at "+i+"% interest = "+String.format("%.2f",calculateInterest(amount, i)));
+		}
+	}
+	
+	public static double calculateInterest(double amount, double interestRate) {
+		return(amount * (interestRate/100));
 	}
 
 }

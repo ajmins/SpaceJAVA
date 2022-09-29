@@ -29,37 +29,42 @@ public class OverloadingMethodChallenge {
 	 */
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("In Centimeters: "+calcFeetAndInchesToCentimeters(5, 4)+"cm");
+		
+		calcFeetAndInchesToCentimeters(8, 4);
+		calcFeetAndInchesToCentimeters(100);
 
 	}
 	public static double calcFeetAndInchesToCentimeters (double feet, double inches) {
-		if (feet >= 0 && (inches >=0 && inches <=12)) {
-			//calculate
-			double feetAndInchesToCm = (feet * 30.38) + (inches * 2.54);
-			//multiply the length value feet by 30.48
-			//multiply the length value inches by 2.54
-			return feetAndInchesToCm;
+		
+		//calculate how many centimetres comprise the feet and inches
+		//multiply the length value feet by 30.48
+		//multiply the length value inches by 2.54
+		
+		if (feet < 0 || (inches < 0 || inches >12)) {
+			System.out.println("Invalid feet or inches");
+			return -1;
 		}
 		else {
-			return -1;
+			double feetAndInchesToCm = (feet * 30.48) + (inches * 2.54);
+			System.out.println(feet +" feet, "+inches+" inches in Centimeters: "+feetAndInchesToCm+"cm");
+			return feetAndInchesToCm;
 		}
 	
+		
 	}
-	//not completed
 	public static double calcFeetAndInchesToCentimeters (double inches) {
+		//calculate how many feet are in the inches
+		//one foot = 12 inches 
+		
 		if (inches >=0) {
-			//calculate how many feet are in the inch
-			double feetAndInchesToCm =  (inches * 2.54);
-			//multiply the length value by 30.48
-			//multiply the length value by 2.54
-			return feetAndInchesToCm;
+
+			double inchesToFeet =  (inches / 12);
+			System.out.println(inches+" inches in Feet: "+inchesToFeet+"ft");
+			return inchesToFeet;
 		}
 		else {
+			System.out.println("Invalid inches");
 			return -1;
-		}
-		
-		
+		}				
 	}
-
 }

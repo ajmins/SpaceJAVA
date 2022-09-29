@@ -10,8 +10,8 @@ public class PrimitiveDatType {
 			int i = 5; //4 bytes -> 32bits
 			short s = 5; //2 bytes -> 16bits -> -32768 to 32767
 			byte b = 5; //1 byte -> 8bits -> -128 to 127
-			float f = 5.5f; 
-			double d = 5.5;
+			float f = 5.5f; //4 bytes -> 32bits
+			double d = 5.5; //8bytes -> 64bits 
 			boolean t = true;
 			char c = 'A'; //2 bytes -> 16 bits ; allowed to store unicode character(not possible in byte)
 			c = 66;

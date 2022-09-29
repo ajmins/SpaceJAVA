@@ -5,6 +5,16 @@ public class OverloadedMethods {
 	//overloaded methods =  methods that share the same name but have different parameter
 	//						method name + parameters =  method signature
 	
+	/*
+	 * println method is a great example of method overloading in java
+	 * there are 10 methods with the name println
+	 * can print intger, double, string etc
+	 * 
+	 * it imroves code readability and reusability and flexibility
+	 * acheives consistency in naming
+	 */
+	
+	
 	public static void main(String[] args) {
 		
 		//int x = add(1,2);

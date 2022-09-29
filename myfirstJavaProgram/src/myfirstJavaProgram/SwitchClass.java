@@ -1,6 +1,13 @@
 package myfirstJavaProgram;
 
 import java.util.Scanner;
+/*
+ * Control flow Statements
+ * 1. switch statement
+ * 2. for statement
+ * 3. while statement
+ * 4. do-while statement
+ */
 
 public class SwitchClass {
 
@@ -9,22 +16,25 @@ public class SwitchClass {
 		System.out.println("Enter the day:");
 		String day = scanner.nextLine();
 		
-		switch(day) {
-			case "Sunday": System.out.println("It is Sunday");
+		switch(day.toLowerCase()) {
+			case "sunday": System.out.println("It is Sunday");
 			break;
-			case "Monday": System.out.println("It is Monday");
+			case "monday": System.out.println("It is Monday");
 			break;
-			case "Tuesday": System.out.println("It is Tuesday");
+			case "tuesday": System.out.println("It is Tuesday");
 			break;
-			case "Wednesday": System.out.println("It is Wednesday");
+			case "wednesday": System.out.println("It is Wednesday");
 			break;
-			case "Thursday": System.out.println("It is Thursday");
+			case "thursday": System.out.println("It is Thursday");
 			break;
-			case "Friday": System.out.println("It is Friday");
+			case "friday": System.out.println("It is Friday");
 			break;
-			case "Saturday": System.out.println("It is Saturday");
+			case "saturday": System.out.println("It is Saturday");
+			break;
+			case "day" :case "DAY":case "Day":System.out.println("You have not entered a day!");
 			break;
 			default: System.out.println("Invalid day!!");
+			//here break; is optional
 		}
 		scanner.close();
 	}
