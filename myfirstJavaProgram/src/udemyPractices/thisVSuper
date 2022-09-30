@@ -1,0 +1,98 @@
+this VS super
+
+
+The keyword super is used to access/call the parent class members (variables and methods). 
+
+The keyword this is used to call the current class members (variables and methods). 
+This is required when we have a parameter with the same name as an instance variable (field).
+
+
+NOTE: 
+We can use both of them anywhere in a class except static areas(the static block or a static method). 
+Any attempt to do so will lead to compile-time errors (more on static later in the course).
+
+
+this Keyword
+--------------
+The keyword this is commonly used with constructors and setters, and optionally in getters (easier for beginners). 
+In the example below we are using the this keyword in the constructor and setter since there is a parameter with the same name. 
+In the getter we don't have any parameters so the this keyword is optional.
+
+
+class House {
+private String color;
+public House (String color) {
+  //this keyword is required, same parameter name as field 
+  this.color = color;
+  }
+  
+public String getColor() {
+	// this is optional 
+	return color; // same as return this.color;
+	}
+	
+public void setColor (String color) {
+// this keyword is required, same parameter name as field 
+	this.color = color;
+}
+}
+
+
+super Keyword
+-----------------
+
+The keyword super is commonly used with method overriding, 
+when we call a method with the same name from the parent class. 
+In the example below we have a method printMethod that calls super.printMethod.
+
+class SuperClass // parent class aka super class 
+	public void printMethod() {
+		System.out.println("Printed in Superclass.");
+	}
+
+}
+class Subclass extends Superclass { // subclass aka child class
+	//Overrides method from parent 
+	@Override 
+	public void printMethod() {
+		super.print Method(); // calls method in Superclass (parent) 
+		System.out.println("Printed in Subclass");
+	}
+}	
+		
+class Mainclass{
+	 public static void main(String[] args) {
+			Subclass s = new Subclass(); 
+			s.print Method();
+	}
+}
+
+or in another words
+In other words it's calling the method with the same name from the parent class. 
+Without the keyword super in this case it would be recursive call. 
+Meaning that the method would call it self forever (or until memory is fully used). 
+That is why the super keyword is needed.
+
+this() vs super() call
+• In Java we have the this() call and the super() call. 
+Notice the braces it is known as a call since it looks like a regular method call. 
+• Use this() to call a constructor from another overloaded constructor in the same class. 
+• The call to this() can be used only in a constructor, and it must be the first statement in a constructor. 
+It's used with constructor chaining, 
+in other words when one constructor calls another constructor, and helps to reduce duplicated code. 
+• The only way to call a parent constructor is by calling super(). 
+This calls the parent constructor.
+
+• The Java Compiler puts a default call to super() if we don't add it, and it is always the no
+args super which is inserted by compiler (constructor without arguments). 
+• The call to super() must be the first statement in each constructor. 
+• Even Abstract classes have constructors, although you can never instantiate an abstract
+class using the new keyword. 
+An abstract class is still a super class, so its constructors run when someone makes an instance of a concrete subclass.
+
+NOTE
+a constructor can have a call to super() or this() but never both
+
+
+
+

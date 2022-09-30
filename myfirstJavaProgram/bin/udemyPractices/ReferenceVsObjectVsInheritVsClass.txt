@@ -1,0 +1,63 @@
+//Notes
+
+Reference vs Object vs Instance vs Class 
+• Let's use the analogy of building a house to understand Classes. 
+• A class is basically a blueprint for a house, using the blueprint (plans) we can build as many houses as we like based on those plans. 
+• Each house you build (in other words instantiate using the new operator) is an object also known as an instance. 
+• Each house you build has an address (a physical location). 
+  In other words if you want to tell someone where you live, you give them your address (perhaps written on a piece of paper). 
+  This is known as a reference. 
+• You can copy that reference as many times as you like but there is still just one house. 
+In other words we are copying the paper that has address on it not the house itself. 
+• We can pass references as parameters to constructors and methods 
+
+//class House
+
+class House {
+	private String color;
+	public House (String color) {
+		this.color = color;
+	public String getColor() {
+		return color;
+	public void setColor (String color) {
+		this.color = color;
+	}
+
+
+//main class
+public class Main {
+	public static void main(String[args) {
+	
+		House blueHouse = new House ("blue"); 
+		//create a new instance oh House class; it is reference to the object in memory
+		//ie, blueHouse -->(referecning) 
+										--	[object of type: Hosue] and [color: blue]
+		
+		House anotherHouse = blueHouse;
+		//here creates anotheer reference to the same object in memory 
+		//ie blueHouse -->(referecning) 
+										--	[object of type: Hosue] and [color: blue]
+			 anotherHouse -->(referecning)						
+		
+		System.out.println (blueHouse.getColor()); // prints blue 
+		System.out.println (anotherHouse.getColor()); // blue
+		
+		anotherHouse.setColor ("red"); 
+		//here we change the color of one, but both references still point the same object.
+		
+		System.out.println (blueHouse.getColor() ); // red 
+		System.out.println(anotherHouse.getColor()); // red
+
+		House greenHouse = new House ("green"); 
+		//here created another new instance of the House class with colour set to green
+		//now we have two objects in the memory  but we have three refernces (bluhouse,anotherhouse and greenhouse)
+		
+		anotherHouse = greenHouse;
+		//here deferencing anotherHouse to greenhouse
+		it will now points a different object (greenhose) in the memeory
+		
+		System.out.println (blueHouse.getColor()); // red 
+		System.out.println (green House.getColor()); // green 
+		System.out.println (another House.getColor()); // green
+	}
+}
