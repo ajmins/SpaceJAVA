@@ -11,9 +11,13 @@ public class InheritenceAnimalMain {
 		//now we can use the public method eat() which is defined in the animal class but
 		//can be inherited by the dog class
 		
-		//dog.eat();
-		//dog.walk();
-		dog.run();
+		animal.move(34);
+		System.out.println("----------------------------");
+		dog.eat();
+		System.out.println("----------------------------");
+		dog.walk();
+		System.out.println("----------------------------");
+		//dog.run();
 		InheritAnimalFish fish = new InheritAnimalFish("Nemo", 1, 5, 2, 2, 5);
 		fish.swim(40);
 	}

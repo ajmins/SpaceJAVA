@@ -5,7 +5,7 @@ public class OverloadedConstructorMain {
 	//overloaded constructor =  multiple constructors within a class with same name,
 	//							but have differnt parameters 
 	//		two methods: change the data types or changing the number of datatypes
-	//							signature = name = parameters
+	//							signature = name + parameters
 
 	public static void main(String[] args) {
 		

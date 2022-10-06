@@ -1,14 +1,13 @@
 package udemyPractices;
 
-import java.security.PublicKey;
-import java.util.Iterator;
+
 
 public class OverloadingVSOverriding {
 
 	
 
 	public static void main(String[] args) {
-		Overloading();
+		//Overloading();
 		Overriding();
 	
 		
@@ -29,7 +28,7 @@ public class OverloadingVSOverriding {
 		}
 		
 	}
-
+/*
 	//in two seperate programs
 	public static void Overloading() {
 	
@@ -39,7 +38,7 @@ public class OverloadingVSOverriding {
 			}
 		}
 		int number = 6;
-		public void barking(number) {
+		public final barking(int number) {
 			for (int i = 0; i < number; i++) {
 				System.out.println("woof");
 			}
@@ -47,5 +46,6 @@ public class OverloadingVSOverriding {
 		
 		
 	}
+*/
 
 }

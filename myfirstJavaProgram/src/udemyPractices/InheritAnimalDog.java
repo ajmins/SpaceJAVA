@@ -22,7 +22,7 @@ public class InheritAnimalDog extends InheritenceAnimal{
 	
 	//first create constructor with all the attributes and now insert values which are specific for dogs
 	public InheritAnimalDog(String name, int size, int weight,int eyes, int legs, int tail, int teeth, String coat) {
-		super(name, 1, 1, size, weight);
+		super(name, 1, 1, size, weight); //brain, body =1
 		this.eyes = eyes;
 		this.legs = legs;
 		this.tail = tail;
@@ -45,10 +45,10 @@ public class InheritAnimalDog extends InheritenceAnimal{
 	} 
 	public void walk() {
 		System.out.println("Dog called walk method.");
-		//move(5);
-		//we either use move() or super.move()
+		move(5);
+		//we can either use move() or super.move()
 		//if we use super.move() the move() of the Animal class is considered
-		//but if simple move(), then if there is any other move in the dog class it will work
+		//but if simply move(), then if there is any other move in the dog class it will work
 		super.move(5);
 	}
 	
