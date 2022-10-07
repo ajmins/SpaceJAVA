@@ -1,13 +1,15 @@
 package udemyPractices;
 
-public class CompositionResolution {
+public class CompositionDimensions {
 
 	private int width;
 	private int height;
+	private int depth;
 	
-	public CompositionResolution(int width, int height) {
+	public CompositionDimensions(int width, int height, int depth) {
 		this.width = width;
 		this.height = height;
+		this.depth = depth;
 	}
 
 	public int getWidth() {
@@ -17,6 +19,11 @@ public class CompositionResolution {
 	public int getHeight() {
 		return height;
 	}
+
+	public int getDepth() {
+		return depth;
+	}
+	
 	
 	
 }

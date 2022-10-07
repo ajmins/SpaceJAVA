@@ -1,0 +1,33 @@
+
+Instantiation in JAVA
+----------------------
+In Java, instantiation mean to call the constructor of a class that creates an instance or object of the type of that class. 
+In other words, creating an object of the class is called instantiation. 
+It occupies the initial memory for the object and returns a reference. 
+An object instantiation in Java provides the blueprint for the class.
+
+Creating Instances
+--------------------
+There are two ways to create instances:
+
+	-Using the new Keyword
+	-Using Static Factory Method
+	
+Using the new Keyword
+----------------------
+Defining a Reference: 
+//defines a reference (variable) that can hold an object of the DemoClass  
+DemoClass dc;  
+  
+Instantiation:
+DemoClass dc = new DemoClass();  //instantiation  
+
+We can also instantiate the above class as follows if we defining a reference variable.
+//creates a DemoClass object (instantiate)  
+//new keyword allocates memory space for the newly created object  
+dc = new DemoClass();  
+
+We observe that when we use the new keyword followed by the class name, it creates an instance or object of that class. 
+Creating a constructor of the class is also known as instantiation.
+
+Note: If we want to invoke the methods of the local inner class, we must instantiate that class.

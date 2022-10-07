@@ -6,7 +6,7 @@ public class CompositionMonitor {
 	private String model;
 	private String manufacturer;
 	private int size;
-	private CompositionResolution nativeResolution;
+	private CompositionResolution nativeResolution; //another class
 	
 	public CompositionMonitor(String model, String manufacturer, int size, CompositionResolution nativeResolution) {
 		this.model = model;
@@ -15,7 +15,9 @@ public class CompositionMonitor {
 		this.nativeResolution = nativeResolution;
 	}
 
-	
+	public void drawPixelAt(int x, int y, String color) {
+		System.out.println("Drawing pixel at "+ x + ","+ y + " in color "+ color);
+	}
 	public String getModel() {
 		return model;
 	}
