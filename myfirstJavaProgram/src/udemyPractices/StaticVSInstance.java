@@ -4,7 +4,8 @@ package udemyPractices;
 //static Methods
 
 /*
- * • The Java Compiler puts a default call to super() if we don't add it, and it is always the no args super which is inserted by compiler (constructor without arguments). • The call to super() must be the first statement in each constructor. 
+ * • The Java Compiler puts a default call to super() if we don't add it, and it is always the no args super which is inserted by compiler (constructor without arguments). 
+• The call to super() must be the first statement in each constructor. 
  * • Even Abstract classes have constructors, although you can never instantiate an abstract class using the new keyword. 
  * An abstract class is still a super class, so its constructors run when someone makes an instance of a concrete subclass.
 
@@ -71,6 +72,42 @@ public class StaticVSInstance { //main class
  * 				if yes -> instance method
  * 				if no  -> static method
  */
+
+/*
+ * Difference Between the static method and instance method
+Instance Methods											Static Methods
+
+It requires an object of the class.							It doesn’t require an object of the class.
+It can access all attributes of a class.					It can access only the static attribute of a class.
+The methods can be accessed only using object reference.	The method is only accessed by class name.
+Syntax: Objref.methodname()									Syntax: className.methodname()
+It’s an example of pass-by-value programming.				It is an example of pass-by-reference programming.
+ 
+ *
+ *Why is the main method in Java static?
+ *It’s because calling a static method isn’t needed of the object. 
+ *If it were a non-static function, JVM would first build an object before calling the main() method, resulting in an extra memory allocation difficulty.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //VARIABLES
 /*Static Variables
