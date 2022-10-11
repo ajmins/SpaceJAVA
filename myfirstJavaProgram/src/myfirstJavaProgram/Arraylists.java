@@ -6,6 +6,7 @@ public class Arraylists {
 	//ArrayList: resizable array
 	//			 ELements can be added and removed after compilation phase
 	//			 store reference data types
+	//this will automatically take List interface
 	public static void main(String[] args) {
 		
 		ArrayList<String> food =  new ArrayList<String>();

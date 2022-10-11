@@ -48,6 +48,12 @@ public class OopsMasterChallengeMain {
 		healthyBurger.addHealthAddition2("Lentils", 4.3);
 		System.out.println("total Burger Price is "+ healthyBurger.calculatePrice());
 		
+		DeluxBurger dBurger = new DeluxBurger();
+		dBurger.calculatePrice();
+		//check whether it allow multiple addition
+		dBurger.addAddition3("another add-on", 58.96);
+		//this executed initially, for that we need method overriding in deluxburger class
+		dBurger.calculatePrice();
 	}
 
 }

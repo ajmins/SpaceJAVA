@@ -1,11 +1,13 @@
 package myfirstJavaProgram;
 import java.util.*;
 
+
 public class ArrayList2D {
 	//2D ArrayList =  a dynamic list of lists
 	//You can change the size of these lists during runtime
 	public static void main(String[] args) {
 		
+		//ArrayList is a class
 		ArrayList<ArrayList<String>> groceryList = new ArrayList<ArrayList<String>>();
 		
 		ArrayList<String> bakeryList = new ArrayList<String>();
@@ -37,6 +39,9 @@ public class ArrayList2D {
 		//[Pasta, Wheat bread, Donuts]
 		System.out.println(groceryList.get(0).get(0));
 		//Pasta
+		
+		
 	}
+
 
 }
