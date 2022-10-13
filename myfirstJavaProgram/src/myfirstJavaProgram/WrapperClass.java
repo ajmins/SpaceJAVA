@@ -1,5 +1,4 @@
 package myfirstJavaProgram;
-
 public class WrapperClass {
 	//wrapper class = provide a way to use primitive data types as reference data types 
 	//reference data types contain useful methods can be used with collections(eg:arrayList)
@@ -36,6 +35,11 @@ public class WrapperClass {
 	 * The classes in java.util package handles only objects and hence wrapper classes help in this case also.
 	 * Data structures in the Collection framework, such as ArrayList and Vector, store only objects (reference types) and not primitive types.
 	 * An object is needed to support synchronization in multithreading.
+	
+		Memory management
+	 * In Java, all data type for primitive type variables is stored on the stack.
+	 * For reference data types, the stack holds a pointer to the object on the heap. 
+	 * When setting a reference type variable equal to another reference type variable, a copy of only the pointer is made.
 	 */
 
 }
