@@ -31,12 +31,16 @@ Java ArrayList forEach()-performs an action to all elements of arraylist
 Java ArrayList iterator()-returns an iterate to loop through the ArrayList
  */
 
+
 public class Arraylists {
 	//ArrayList: resizable array
 	//			 ELements can be added and removed after compilation phase
 	//			 store reference data types
 	//			it can hold objects
 	//this will automatically take List interface
+	public static class demo{
+		
+	}
 	public static void main(String[] args) {
 		
 		ArrayList<String> food =  new ArrayList<String>();
@@ -45,29 +49,59 @@ public class Arraylists {
 		food.add("Hamburger");
 		food.add("Hotdog");
 		
+//		for(int i=0;i<food.size();i++) {
+//			System.out.println(food.get(i));
+//		}
+//		
+//		//set() method -> replace a value with another based on index
+//		food.set(0, "Sushi");
+//		System.out.println("------");
+//		for(int i=0;i<food.size();i++) {
+//			System.out.println(food.get(i));
+//		}
+//		
+//		//remove() method -> to remove an element based on the index
+//		food.remove(2);
+//		System.out.println("------");
+//		for(int i=0;i<food.size();i++) {
+//			System.out.println(food.get(i));
+//		}
+//		
+//		//clear() method: to clear the list
+//		food.clear();
+//		System.out.println("------");
+//		for(int i=0;i<food.size();i++) {
+//			System.out.println(food.get(i));
+//		}
+		
+		ArrayList<String> item = new ArrayList<String>();
+		ArrayList<String> item2 = new ArrayList<String>();
+		
+		item = food; //any change will reflect the both (shallow copy)???????
+					//deep copy???????
+		item.add("Onion");
+		for(int i=0;i<food.size();i++) {
+			item2.add(food.get(i));
+		}
+		System.out.println("================");
 		for(int i=0;i<food.size();i++) {
 			System.out.println(food.get(i));
 		}
-		
-		//set() method -> replace a value with another based on index
-		food.set(0, "Sushi");
-		System.out.println("------");
-		for(int i=0;i<food.size();i++) {
-			System.out.println(food.get(i));
+		System.out.println("================");
+		for(int i=0;i<item.size();i++) {
+			System.out.println(item.get(i));
 		}
-		
-		//remove() method -> to remove an element based on the index
-		food.remove(2);
-		System.out.println("------");
+		System.out.println("================");
 		for(int i=0;i<food.size();i++) {
-			System.out.println(food.get(i));
+			item2.add(food.get(i));
 		}
-		
-		//clear() method: to clear the list
-		food.clear();
-		System.out.println("------");
-		for(int i=0;i<food.size();i++) {
-			System.out.println(food.get(i));
+		System.out.println("================");
+		for(int i=0;i<item2.size();i++) {
+			System.out.println(item2.get(i));
+		}
+		String text = "melvin";
+		for (double i = 0; i < 1000000000; i++) {
+			text= text+i;
 		}
 		
 	}

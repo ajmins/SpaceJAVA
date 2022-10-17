@@ -13,7 +13,6 @@ public class MatrixProblem {
 	public static void main(String[] args) {
 		int Max = 6;
 		int k = 65;
-		boolean flag = false;
 		for (int i = 1; i < Max+1; i++) {
 			for (int j = 1; j < Max+1; j++) {
 				if (i == j) {
