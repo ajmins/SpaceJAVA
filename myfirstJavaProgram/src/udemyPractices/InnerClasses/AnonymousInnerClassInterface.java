@@ -8,6 +8,7 @@ public class AnonymousInnerClassInterface {
 		//An object of the Anonymous class is created that is referred to by 'eaten', a reference variable of the Eatable type.
 		Eatable eaten = new Eatable() {
 		
+			//here ther is no class name
 			@Override
 			public void eat() {
 				System.out.println("nice fruits");
