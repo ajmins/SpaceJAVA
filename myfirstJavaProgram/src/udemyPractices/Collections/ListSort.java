@@ -18,7 +18,10 @@ public class ListSort {
 		//natural sorting using Collections class
 		Collections.sort(values);
 		System.out.println("Natural Sorting: "+values);
-		
+
+		Collections.reverse(values);
+		System.out.println("Reverse Sorting: "+values);
+		System.out.println("================================");
 		//custom sorting, reverse order
 		//this is comparator o2-o1 used inside lamda operator ->
 		//it is of 3 kinds, ==, > & <; if positive return ascending order, if negative return in dscending order

@@ -1,6 +1,7 @@
 package udemyPractices.InterfaceDefault;
 
-public class Square implements Polygon{
+
+public class Square implements  Polygon{
 
 	@Override
 	public void getArea() {
