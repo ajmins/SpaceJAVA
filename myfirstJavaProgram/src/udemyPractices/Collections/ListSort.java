@@ -26,16 +26,16 @@ public class ListSort {
 		//this is comparator o2-o1 used inside lamda operator ->
 		//it is of 3 kinds, ==, > & <; if positive return ascending order, if negative return in dscending order
 		values.sort((o1,o2) -> {return (o2-o1);});
-		System.out.println("Reverse Sorting: "+values);
+		System.out.println(" Sorting (o2-o1): "+values); //decending
 		
 		values.sort((o1,o2) -> {return (o1-o2);});
-		System.out.println("Reverse Sorting: "+values);
+		System.out.println(" Sorting (o1-o2): "+values); //ascending
 		
 		values.sort((o1,o2) -> {return (o1-o2-o1);});
-		System.out.println("Reverse Sorting: "+values);
+		System.out.println(" Sorting (o1-o2-o1): "+values); //decending
 		
 		values.sort((o1,o2) -> {return (o1-o2-o1-o2);});
-		System.out.println("Reverse Sorting: "+values);
+		System.out.println(" Sorting (o1-o2-o1-o2): "+values); //ascending
 
 	}
 
