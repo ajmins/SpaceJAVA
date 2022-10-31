@@ -1,6 +1,5 @@
 package udemyPractices.ExceptionPractices;
 
-import javax.swing.text.NumberFormatter;
 
 public class Example1 {
 
