@@ -13,8 +13,8 @@ public class FileWriterClass {
 	public static void main(String[] args) {
 		try {
 			FileWriter fW = new FileWriter("C:\\Users\\Ajmi\\Desktop\\abc2.txt");
-					fW.write("Johny Johny Yes Papa");
-					fW.close();
+			fW.write("Johny Johny Yes Papa");
+			fW.close();
 		
 		} catch (Exception e) {
 			System.out.println(e);
