@@ -1,0 +1,195 @@
+//online-practice
+//https://www.sql-practice.com/
+
+1. Show first name, last name, and gender of patients who's gender is 'M'
+- SELECT first_name,last_name,gender FROM patients
+WHERE gender='M';
+
+2. Show first name and last name of patients who does not have allergies. (null)
+-SELECT first_name,last_name FROM patients
+WHERE allergies IS null;
+
+3.Show first name of patients that start with the letter 'C'
+-SELECT first_name FROM patients
+WHERE first_name like "C%";
+
+4.Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)
+-SELECT first_name,last_name FROM patients
+WHERE weight between 100 AND 120;
+
+5.Update the patients table for the allergies column. If the patient's allergies is null then replace it with 'NKA'
+-update patients
+set allergies = 'NKA'
+where allergies IS null;
+
+6.Show first name and last name concatinated into one column to show their full name.
+-SELECT concat( first_name, ' ', last_name) AS full_name
+from patients;
+
+7.Show first name, last name, and the full province name of each patient.
+
+Example: 'Ontario' instead of 'ON'
+-Sol1: 
+select first_name, last_name, province_name from patients p, province_names pr
+where p.province_id=pr.province_id;
+
+-Sol2:
+ SELECT
+  first_name,
+  last_name,
+  province_name
+FROM patients
+  JOIN province_names ON province_names.province_id = patients.province_id;
+
+8.Show how many patients have a birth_date with 2010 as the birth year.
+-Sol1:
+select count(patient_id) from patients
+where birth_date Like '2010%';
+-Sol2:
+SELECT COUNT(*) AS total_patients
+FROM patients
+WHERE YEAR(birth_date) = 2010;
+
+9.Show the first_name, last_name, and height of the patient with the greatest height.
+-Sol1:
+select first_name, last_name, height from patients
+where height = (select max(height) from patients);
+-Sol2:
+SELECT
+  first_name,
+  last_name,
+  MAX(height) AS height
+FROM patients;
+
+10. Show all columns for patients who have one of the following patient_ids:
+1,45,534,879,1000
+-select * From patients
+where patient_id in (1,45,534,879,1000);
+
+11.Show the total number of admissions
+-Sol1:
+select count(patient_id) from admissions;
+-Sol2:
+SELECT COUNT(*) AS total_admissions
+FROM admissions;
+
+12.Show all the columns from admissions where the patient was admitted and discharged on the same day.
+-select * from admissions
+where admission_date = discharge_date;
+
+13.Show the total number of admissions for patient_id 579.
+-SELECT
+  patient_id,
+  COUNT(*) AS total_admissions
+FROM admissions
+WHERE patient_id = 579;
+
+14.Based on the cities that our patients live in, show unique cities that are in province_id 'NS'?
+- SELECT DISTINCT(city) AS unique_cities
+FROM patients
+WHERE province_id = 'NS';
+
+15.Write a query to find the first_name, last name and birth date of patients who have height more than 160 and weight more than 70
+-select first_name, last_name, birth_date from patients
+where height > 160 and weight > 70;
+
+16.Write a query to find list of patients first_name, last_name, and allergies from Hamilton where allergies are not null
+-SELECT first_name,last_name,allergies FROM patients
+WHERE allergies IS not null and city = "Hamilton";
+
+17.Show unique birth years from patients and order them by ascending.
+-Sol1:
+SELECT distinct YEAR(birth_date) FROM patients
+order by year(birth_date);
+-Sol2:
+SELECT
+  DISTINCT YEAR(birth_date) AS birth_year
+FROM patients
+ORDER BY birth_year;
+
+18.Show unique first names from the patients table which only occurs once in the list.
+
+For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.
+-select distinct first_name from patients
+group by first_name
+having count(first_name)=1;
+
+19.Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
+-Sol1:
+select patient_id, first_name from patients
+where first_name like 's%s' and len(first_name)>=6;
+-Sol2:
+SELECT
+  patient_id,
+  first_name
+FROM patients
+WHERE first_name LIKE 's____%s';
+
+20.Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'.
+
+Primary diagnosis is stored in the admissions table.
+-select patients.patient_id,first_name, last_name from patients
+join admissions on patients.patient_id = admissions.patient_id
+where diagnosis = "Dementia";
+
+21.Display every patient's first_name.
+Order the list by the length of each name and then by alphbetically
+-select first_name from patients
+order by len(first_name), first_name;
+
+22.
+Show the total amount of male patients and the total amount of female patients in the patients table.
+Display the two results in the same row.
+-
+SELECT 
+  (SELECT count(*) FROM patients WHERE gender='M') AS male_count, 
+  (SELECT count(*) FROM patients WHERE gender='F') AS female_count;
+
+23.Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.
+-select first_name, last_name, allergies 
+from patients
+where  allergies IN ('Morphine',  'Penicillin')
+Order by allergies,first_name,last_name;
+
+24.Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+-SELECT patient_id, diagnosis
+  FROM admissions
+  GROUP BY patient_id, diagnosis
+  HAVING COUNT(*) > 1
+
+25.Show the city and the total number of patients in the city.
+Order from most to least patients and then by city name ascending.
+-select city, count(*) as num_patients
+from patients
+group by city
+order by num_patients desc, city;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
