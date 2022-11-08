@@ -164,6 +164,224 @@ from patients
 group by city
 order by num_patients desc, city;
 
+26. Show first name, last name and role of every person that is either patient or doctor.
+The roles are either "Patient" or "doctor"
+- SELECT first_name, last_name, 'Patient' as role from patients
+union all
+select first_name, last_name, 'doctor' as role from doctors
+
+27. Show all allergies ordered by popularity. Remove NULL values from query.
+-select allergies, count(*) As total_diagnosis from patients
+where allergies is not null
+group by allergies
+order by total_diagnosis desc;
+
+28. Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date.
+-select first_name, last_name, birth_date from patients
+where year(birth_date) between 1970 and 1979
+order by birth_date;
+
+29. We want to display each patient's full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order
+EX: SMITH,jane
+-select concat(upper(last_name), ',',lower(first_name)) as full_name from patients
+order by first_name desc;
+
+30. Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+-SELECT
+  province_id,
+  SUM(height) AS sum_height
+FROM patients
+GROUP BY province_id
+HAVING sum_height >= 7000
+
+31.Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'
+-select (max(weight)-min(weight)) as weight_difference from patients
+where last_name = 'Maroni';
+
+32. Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
+-select day(admission_date)as day_number, count(*) as number_of_admissions from admissions
+group by day_number
+order by number_of_admissions desc;
+
+33. Show all columns for patient_id 542's most recent admission_date.
+-select * from admissions
+where patient_id = 542
+group by patient_id
+having max(admission_date);
+
+34. Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
+1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+-select patient_id, attending_doctor_id, diagnosis from admissions
+where (
+ ((attending_doctor_id like '%2%') and (len(patient_id)=3)) 
+  or
+ (patient_id % 2 != 0) and (attending_doctor_id in(1,5,19))
+ );
+
+35. Show first_name, last_name, and the total number of admissions attended for each doctor.
+
+Every admission has been attended by a doctor.
+- select first_name, last_name, count(*) as admissions_total
+from doctors 
+join admissions on doctors.doctor_id = admissions.attending_doctor_id
+group by doctor_id;
+
+36. For each physician, display their id, full name, and the first and last admission date they attended.
+-Sol1 :
+select doctor_id, concat(first_name,' ',last_name) as full_name, 
+min(admission_date) as first_admisssion_date, max(admission_date) as last_admission_date 
+From doctors 
+join admissions on doctors.doctor_id = admissions.attending_doctor_id
+group by doctor_id;
+
+-Sol2: 
+select
+  doctor_id,
+  first_name || ' ' || last_name as full_name,
+  min(admission_date) as first_admission_date,
+  max(admission_date) as last_admission_date
+from admissions a
+  join doctors ph on a.attending_doctor_id = ph.doctor_id
+group by doctor_id;
+
+37.Display the total amount of patients for each province. Order by descending.
+-select province_name, count(*) as patient_count 
+From patients 
+join province_names on patients.province_id = province_names.province_id
+group by province_name
+order by patient_count desc;
+
+38. For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.
+- select concat(pt.first_name,' ',pt.last_name) as patient_name, diagnosis, 
+concat(dr.first_name,' ',dr.last_name) as doctor_name 
+from patients pt
+join admissions ad on pt.patient_id = ad.patient_id 
+join doctors dr on dr.doctor_id = ad.attending_doctor_id;
+
+39. Show all of the patients grouped into weight groups.
+Show the total amount of patients in each weight group.
+Order the list by the weight group decending.
+
+For example, if they weight 100 to 109 they are placed in the 100 weight group, 110-119 = 110 weight group, etc.
+- SELECT
+  COUNT(*) AS patients_in_group,
+  FLOOR(weight / 10) * 10 AS weight_group
+FROM patients
+GROUP BY weight_group
+ORDER BY weight_group DESC;
+
+40. Show patient_id, weight, height, isObese from the patients table.
+Display isObese as a boolean 0 or 1.
+Obese is defined as weight(kg)/(height(m)2) >= 30.
+weight is in units kg.
+height is in units cm.
+-select patient_id, weight, height,
+(case
+	when weight / (power(height/100.0,2)) >= 30 then 1
+    else 0
+    end) as 'isObese'
+from patients;
+
+--Weight = 68 kg, Height = 165 cm (1.65 m)
+--Calculation: 68 ÷ (1.65)^2 = 24.98
+
+41. Show patient_id, first_name, last_name, and attending doctor's specialty.
+Show only the patients who has a diagnosis as 'Epilepsy' and the doctor's first name is 'Lisa'
+
+Check patients, admissions, and doctors tables for required information.
+- select pt.patient_id, pt.first_name, pt.last_name, specialty
+from patients pt 
+join admissions ad on pt.patient_id = ad.patient_id 
+join doctors dr on dr.doctor_id = ad.attending_doctor_id
+where
+diagnosis = 'Epilepsy' and dr.first_name = 'Lisa';
+
+42. All patients who have gone through admissions, can see their medical documents on our site. Those patients are given a temporary password after their first admission. Show the patient_id and temp_password.
+
+The password must be the following, in order:
+1. patient_id
+2. the numerical length of patient's last_name
+3. year of patient's birth_date
+-select distinct pt.patient_id, concat(pt.patient_id,len(pt.last_name),year(birth_date)) as temp_password
+from patients pt
+join admissions on pt.patient_id = admissions.patient_id
+;
+
+43. Each admission costs $50 for patients without insurance, and $10 for patients with insurance. All patients with an even patient_id have insurance.
+Give each patient a 'Yes' if they have insurance, and a 'No' if they don't have insurance. Add up the admission_total cost for each has_insurance group.
+-select
+(case
+ 	when (patient_id % 2 = 0) then 'Yes'
+ 	else 'No'
+ 	end) as has_insurance,
+sum(  
+(case
+ 	when (patient_id % 2 = 0) then '10'
+ 	else '50'
+ 	end))as cost_after_insurance
+
+from admissions
+group by has_insurance;
+
+44. Show the provinces that has more patients identified as 'M' than 'F'. Must only show full province_name
+-select province_name
+from province_names
+join patients on patients.province_id = province_names.province_id
+group by province_name
+having
+count(case when gender = 'M' then 1 end) > count(case when gender = 'F' then 1 end);
+
+45. We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:
+- First_name contains an 'r' after the first two letters.
+- Identifies their gender as 'F'
+- Born in February, May, or December
+- Their weight would be between 60kg and 80kg
+- Their patient_id is an odd number
+- They are from the city 'Kingston'
+
+-Sol1:
+SELECT *
+FROM patients
+WHERE
+  first_name LIKE '__r%'
+  AND gender = 'F'
+  AND MONTH(birth_date) IN (2, 5, 12)
+  AND weight BETWEEN 60 AND 80
+  AND patient_id % 2 = 1
+  AND city = 'Kingston';
+
+
+46. Show the percent of patients that have 'M' as their gender. Round the answer to the nearest hundreth number and in percent form.
+
+SELECT CONCAT(
+    ROUND(
+      (
+        SELECT COUNT(*)
+        FROM patients
+        WHERE gender = 'M'
+      ) / CAST(COUNT(*) as float),
+      4
+    ) * 100,
+    '%'
+  ) as percent_of_male_patients
+FROM patients;
+
+
+47. For each day display the total amount of admissions on that day. Display the amount changed from the previous date.
+-
+select admission_date,
+	count(admission_date) as admission_day,
+	count(admission_date) - lag(count(admission_date)) over(order by admission_date) as admission_count_change
+from admissions 
+group by admission_date;
+
+
+
+
+
+
+
 
 
 
